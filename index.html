@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Alexander Chen | Senior Full-Stack Developer</title>
+  <title>Shoayeb Al Jannat | A Fourth Year Engineering Student</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap"
@@ -330,9 +330,37 @@
       background: none;
       border: none;
       color: var(--light);
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       cursor: pointer;
       z-index: 1001;
+      width: 30px;
+      height: 30px;
+      position: relative;
+    }
+
+    /* Hamburger icon styling */
+    .hamburger-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      transition: opacity 0.3s ease;
+    }
+
+    .hamburger-icon.fa-bars {
+      opacity: 1;
+    }
+
+    .hamburger-icon.fa-times {
+      opacity: 0;
+    }
+
+    .mobile-menu-btn.active .hamburger-icon.fa-bars {
+      opacity: 0;
+    }
+
+    .mobile-menu-btn.active .hamburger-icon.fa-times {
+      opacity: 1;
     }
 
     .mobile-menu {
@@ -341,7 +369,7 @@
       right: -100%;
       width: 300px;
       height: 100vh;
-      background: rgba(15, 23, 42, 0.95);
+      background: rgba(15, 23, 42, 0.97);
       backdrop-filter: blur(12px);
       padding: 100px 40px 40px;
       transition: var(--transition);
@@ -376,16 +404,7 @@
       transform: translateX(10px);
     }
 
-    .mobile-close {
-      position: absolute;
-      top: 30px;
-      right: 30px;
-      font-size: 1.5rem;
-      background: none;
-      border: none;
-      color: var(--light);
-      cursor: pointer;
-    }
+    /* Close button removed since we're using hamburger transform */
 
     /* Hero Section */
     #hero {
@@ -656,7 +675,7 @@
       transform: translateX(-50%);
     }
 
-    /* Skills Section */
+    /* Skills Section - AUTO ANIMATED BARS ON VIEW */
     .skills-container {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
@@ -740,8 +759,13 @@
       border-radius: 5px;
       background: linear-gradient(90deg, var(--primary), var(--secondary));
       width: 0;
+      /* Start at 0, will animate when in view */
       position: relative;
       transition: width 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .skill-bar.animated {
+      /* Animation will be triggered by JavaScript when in view */
     }
 
     .skill-bar::after {
@@ -765,7 +789,7 @@
       }
     }
 
-    /* Languages Section */
+    /* Languages Section - AUTO ANIMATED BARS ON VIEW */
     .languages-container {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -821,8 +845,13 @@
       height: 100%;
       background: linear-gradient(90deg, var(--primary), var(--secondary));
       width: 0;
+      /* Start at 0, will animate when in view */
       transition: width 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       position: relative;
+    }
+
+    .language-progress-bar.animated {
+      /* Animation will be triggered by JavaScript when in view */
     }
 
     .language-progress-bar::after {
@@ -1080,6 +1109,10 @@
         width: 100%;
         max-width: 300px;
       }
+
+      .mobile-menu {
+        width: 100%;
+      }
     }
 
     @media (max-width: 576px) {
@@ -1111,10 +1144,6 @@
       .contact-item {
         padding: 25px;
       }
-
-      .mobile-menu {
-        width: 100%;
-      }
     }
   </style>
 </head>
@@ -1127,7 +1156,7 @@
   <header>
     <div class="container header-container">
       <div class="logo">
-        <span>A</span>lex<span class="logo-dot"></span>
+        <span>Shoayeb</span>Al Jannat<span class="logo-dot"></span>
       </div>
 
       <!-- Desktop Navigation - Visible on laptops/desktops -->
@@ -1145,16 +1174,14 @@
       </nav>
 
       <!-- Mobile Menu Button - Hidden on desktop -->
-      <button class="mobile-menu-btn">
-        <i class="fas fa-bars"></i>
+      <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <i class="fas fa-bars hamburger-icon"></i>
+        <i class="fas fa-times hamburger-icon"></i>
       </button>
     </div>
 
     <!-- Mobile Menu - Hidden by default, shown only on mobile -->
-    <div class="mobile-menu">
-      <button class="mobile-close">
-        <i class="fas fa-times"></i>
-      </button>
+    <div class="mobile-menu" id="mobileMenu">
       <ul>
         <li><a href="#hero">Home</a></li>
         <li><a href="#about">About</a></li>
@@ -1173,13 +1200,18 @@
     <div class="container">
       <div class="hero-content">
         <div class="hero-text fade-in">
-          <h1>Alexander Chen</h1>
-          <div class="profession">Senior Full-Stack Developer</div>
-          <p>I create <span class="highlight">exceptional digital experiences</span> with modern technologies. With over
-            7 years of expertise in web development, I specialize in building scalable applications with cutting-edge
-            tools.</p>
-          <p>Currently leading development at TechVision Inc., where I architect cloud-native solutions for Fortune 500
-            companies.</p>
+          <h1>Shoayeb Al Jannat</h1>
+          <div class="profession">A Fourth Year Engineering Student</div>
+          <p>I As a <span class="highlight">4th-year Textile Engineering student</span> , with expertise in web
+            development, advanced software proficiency, and
+            leadership experience from organizing successful university programs, I bring a unique blend of technical
+            and managerial
+            skills to innovative projects.</p>
+
+
+
+
+
           <div class="hero-btns">
             <a href="#contact" class="btn">Contact Me</a>
             <a href="#experience" class="btn btn-outline">View Experience</a>
@@ -1187,15 +1219,13 @@
         </div>
         <div class="hero-image fade-in">
           <div class="profile-img-container">
-            <img
-              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80"
-              alt="Alexander Chen" class="profile-img">
+            <img src="D:\App\CV\Profile.png" alt="Alexander Chen" class="profile-img">
 
             <div class="tech-icons">
-              <div class="tech-icon"><i class="fab fa-react"></i></div>
+              <div class="tech-icon"><i class="fas fa-hands-helping"></i></div>
               <div class="tech-icon"><i class="fab fa-node-js"></i></div>
-              <div class="tech-icon"><i class="fab fa-aws"></i></div>
-              <div class="tech-icon"><i class="fab fa-python"></i></div>
+              <div class="tech-icon"><i class="fab fa-microsoft"></i></div>
+              <div class="tech-icon"><i class="fas fa-tshirt"></i></div>
             </div>
           </div>
         </div>
@@ -1209,63 +1239,84 @@
       <h2 class="fade-in">About Me</h2>
       <div class="about-content">
         <div class="about-text fade-in">
-          <p>Hello! I'm Alexander, a passionate full-stack developer with a strong focus on creating efficient,
-            scalable, and user-friendly web applications. My journey in tech started 7 years ago, and since then I've
-            worked with startups and enterprises across various industries.</p>
-          <p>I believe in writing clean, maintainable code and staying updated with the latest technologies. My
-            expertise spans across the entire web development stack, from designing responsive UIs to building robust
-            backend systems and deploying to cloud platforms.</p>
-          <p>When I'm not coding, you can find me contributing to open-source projects, mentoring junior developers, or
-            exploring new frameworks. I'm always excited about challenging projects that push the boundaries of what's
-            possible on the web.</p>
+          <p>Hello! I'm Shoayeb, a passionate 4th-year Textile Engineering student at Bangladesh University of Textiles,
+            where I'm developing a
+            strong foundation in textile technology, manufacturing processes, and quality control. My academic journey
+            has equipped
+            me with comprehensive knowledge of textile production, from fiber science to fabric finishing, preparing me
+            for the
+            dynamic challenges of the modern textile industry.</p>
 
-          <div class="stats-container">
-            <div class="stat-box">
-              <div class="stat-number" data-count="50">0</div>
-              <div class="stat-label">Projects Completed</div>
-            </div>
-            <div class="stat-box">
-              <div class="stat-number" data-count="7">0</div>
-              <div class="stat-label">Years Experience</div>
-            </div>
-            <div class="stat-box">
-              <div class="stat-number" data-count="42">0</div>
-              <div class="stat-label">Happy Clients</div>
-            </div>
-            <div class="stat-box">
-              <div class="stat-number" data-count="15">0</div>
-              <div class="stat-label">Awards Won</div>
-            </div>
-          </div>
-        </div>
+          <p>Beyond my core engineering curriculum, I have proactively developed a diverse skill set in web development,
+            mastering
+            technologies like HTML, CSS, and JavaScript to create modern, responsive websites. I'm proficient in
+            essential office
+            tools including Microsoft Word, Excel, and PowerPoint, enabling me to efficiently manage data, create
+            compelling
+            presentations, and streamline professional documentation.</p>
 
-        <div class="about-image fade-in">
-          <div class="glass-card" style="height: 100%;">
-            <h3>My Philosophy</h3>
-            <p><i class="fas fa-quote-left" style="color: var(--primary); margin-right: 10px;"></i>Great software is not
-              just about writing code—it's about solving problems and creating value for users.</p>
-            <p>I follow an agile, user-centered approach to development, ensuring that every line of code serves a
-              purpose and contributes to the overall user experience.</p>
+          <p>My leadership abilities have been honed through active participation in various university clubs and
+            organizations,
+            where I've successfully planned and executed multiple programs and events. These experiences have
+            strengthened my
+            capabilities in team coordination, event management, and effective communication - skills I consider just as
+            valuable as
+            my technical expertise.</p>
 
-            <div style="margin-top: 30px;">
-              <h4>Current Focus</h4>
-              <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px;">
-                <span
-                  style="background: rgba(99, 102, 241, 0.2); color: var(--primary-light); padding: 6px 15px; border-radius: 50px; font-size: 0.9rem;">React
-                  18</span>
-                <span
-                  style="background: rgba(6, 182, 212, 0.2); color: var(--secondary); padding: 6px 15px; border-radius: 50px; font-size: 0.9rem;">Next.js
-                  14</span>
-                <span
-                  style="background: rgba(245, 158, 11, 0.2); color: var(--accent); padding: 6px 15px; border-radius: 50px; font-size: 0.9rem;">TypeScript</span>
-                <span
-                  style="background: rgba(16, 185, 129, 0.2); color: var(--success); padding: 6px 15px; border-radius: 50px; font-size: 0.9rem;">AWS</span>
+          <p>My intellectual curiosity extends beyond engineering into history and political science, where I find
+            valuable insights
+            into societal development and governance systems. This interdisciplinary approach helps me understand the
+            broader
+            context in which technology operates and its impact on communities.</p>
+
+          <p>As I approach graduation, I'm seeking opportunities where I can integrate my textile engineering knowledge
+            with my
+            technical and leadership skills. I'm particularly interested in roles that bridge the gap between
+            traditional textile
+            manufacturing and modern digital solutions, believing that innovation often happens at the intersection of
+            different
+            disciplines.</p>
+
+
+
+
+
+          <div class="about-image fade-in">
+            <div class="glass-card" style="height: 100%;">
+              <h3>My Philosophy</h3>
+              <p><i class="fas fa-quote-left" style="color: var(--primary); margin-right: 10px;"></i>I believe that
+                engineering excellence and human values must walk hand in hand. True innovation emerges not just from
+                technical expertise but from kindness, honesty, and genuine collaboration. My approach integrates the
+                precision of
+                textile engineering with the creativity of web development to create solutions that are both functional
+                and meaningful.</p>
+              <p>I maintain that concentrated effort, combined with a helpful nature, builds lasting impact. By
+                connecting textile
+                technology with digital advancement, I strive to contribute to an industry that honors both tradition
+                and progress while
+                upholding the highest ethical standards in every endeavor.</p>
+
+              <div style="margin-top: 30px;">
+                <h4>Current Focus</h4>
+                <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px;">
+                  <span
+                    style="background: rgba(99, 102, 241, 0.2); color: var(--primary-light); padding: 6px 15px; border-radius: 50px; font-size: 0.9rem;">Textile
+                    Process Innovation</span>
+                  <span
+                    style="background: rgba(6, 182, 212, 0.2); color: var(--secondary); padding: 6px 15px; border-radius: 50px; font-size: 0.9rem;">Web
+                    Technology Integration</span>
+                  <span
+                    style="background: rgba(245, 158, 11, 0.2); color: var(--accent); padding: 6px 15px; border-radius: 50px; font-size: 0.9rem;">Leadership
+                    Development</span>
+                  <span
+                    style="background: rgba(16, 185, 129, 0.2); color: var(--success); padding: 6px 15px; border-radius: 50px; font-size: 0.9rem;">Holistic
+                    Growth</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
   </section>
 
   <!-- Experience Section -->
@@ -1276,65 +1327,44 @@
         <div class="timeline-item fade-in">
           <div class="timeline-circle"></div>
           <div class="timeline-content">
-            <span class="timeline-date">2021 - Present</span>
-            <h3>Lead Full-Stack Developer</h3>
-            <h4 style="color: var(--primary-light); margin-bottom: 15px;">TechVision Inc.</h4>
-            <p>Leading a team of 8 developers in building enterprise-grade web applications. Architecting cloud-native
-              solutions using React, Node.js, and AWS services. Improved application performance by 65% through
-              optimization techniques.</p>
-            <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px;">
-              <span
-                style="background: rgba(99, 102, 241, 0.2); color: var(--primary-light); padding: 4px 12px; border-radius: 4px; font-size: 0.85rem;">React</span>
-              <span
-                style="background: rgba(6, 182, 212, 0.2); color: var(--secondary); padding: 4px 12px; border-radius: 4px; font-size: 0.85rem;">Node.js</span>
-              <span
-                style="background: rgba(245, 158, 11, 0.2); color: var(--accent); padding: 4px 12px; border-radius: 4px; font-size: 0.85rem;">AWS</span>
-              <span
-                style="background: rgba(16, 185, 129, 0.2); color: var(--success); padding: 4px 12px; border-radius: 4px; font-size: 0.85rem;">MongoDB</span>
-            </div>
+            <span class="timeline-date">2020 - Present</span>
+            <h3>Member</h3>
+            <h4 style="color: var(--primary-light); margin-bottom: 15px;">Alor Onirban</h4>
+            <p>Alor Onirban is a nonprofit education welfare organization in Uchakhila, Mymensingh. It provides
+              scholarships, improves
+              rural education, and addresses social issues. During COVID-19, it distributed sanitizers, masks, soap, and
+              relief aid
+              throughout Ishwarganj upazila.</p>
+
           </div>
         </div>
 
         <div class="timeline-item fade-in">
           <div class="timeline-circle"></div>
           <div class="timeline-content">
-            <span class="timeline-date">2019 - 2021</span>
-            <h3>Senior Frontend Developer</h3>
-            <h4 style="color: var(--primary-light); margin-bottom: 15px;">Digital Solutions Agency</h4>
-            <p>Developed responsive web applications for clients in finance, healthcare, and e-commerce sectors.
-              Implemented component libraries and design systems used across 20+ projects. Mentored junior developers
-              and conducted code reviews.</p>
-            <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px;">
-              <span
-                style="background: rgba(99, 102, 241, 0.2); color: var(--primary-light); padding: 4px 12px; border-radius: 4px; font-size: 0.85rem;">Vue.js</span>
-              <span
-                style="background: rgba(6, 182, 212, 0.2); color: var(--secondary); padding: 4px 12px; border-radius: 4px; font-size: 0.85rem;">TypeScript</span>
-              <span
-                style="background: rgba(245, 158, 11, 0.2); color: var(--accent); padding: 4px 12px; border-radius: 4px; font-size: 0.85rem;">Sass</span>
-              <span
-                style="background: rgba(16, 185, 129, 0.2); color: var(--success); padding: 4px 12px; border-radius: 4px; font-size: 0.85rem;">Webpack</span>
-            </div>
+            <span class="timeline-date">2025 - Present</span>
+            <h3>Assistant Finance Secretary</h3>
+            <h4 style="color: var(--primary-light); margin-bottom: 15px;">BUTEX Spinners' Club</h4>
+            <p>Butex Spinners' Club is a nonprofit organization (club) dedicated to advancing yarn engineering education
+              at
+              BUTEX. It provides
+              high-quality training, skill development, and resources to empower students with professional expertise
+              for the textile
+              industry.</p>
+
           </div>
         </div>
 
         <div class="timeline-item fade-in">
           <div class="timeline-circle"></div>
           <div class="timeline-content">
-            <span class="timeline-date">2017 - 2019</span>
-            <h3>Full-Stack Developer</h3>
-            <h4 style="color: var(--primary-light); margin-bottom: 15px;">StartUp Ventures</h4>
-            <p>Built and maintained the company's main product - a SaaS platform for project management. Implemented
-              features from concept to deployment, including real-time collaboration tools and analytics dashboard.</p>
-            <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px;">
-              <span
-                style="background: rgba(99, 102, 241, 0.2); color: var(--primary-light); padding: 4px 12px; border-radius: 4px; font-size: 0.85rem;">React</span>
-              <span
-                style="background: rgba(6, 182, 212, 0.2); color: var(--secondary); padding: 4px 12px; border-radius: 4px; font-size: 0.85rem;">Express.js</span>
-              <span
-                style="background: rgba(245, 158, 11, 0.2); color: var(--accent); padding: 4px 12px; border-radius: 4px; font-size: 0.85rem;">PostgreSQL</span>
-              <span
-                style="background: rgba(16, 185, 129, 0.2); color: var(--success); padding: 4px 12px; border-radius: 4px; font-size: 0.85rem;">Docker</span>
-            </div>
+            <span class="timeline-date">2014 - 2025</span>
+            <h3>Assistant Head of IT</h3>
+            <h4 style="color: var(--primary-light); margin-bottom: 15px;">BUTEX Sports Cub</h4>
+            <p>I coordinated events, managed logistics, and fostered team development, enhancing student engagement and
+              promoting
+              physical wellness while strengthening organizational leadership within the university community.</p>
+
           </div>
         </div>
       </div>
@@ -1349,34 +1379,52 @@
         <div class="timeline-item fade-in">
           <div class="timeline-circle"></div>
           <div class="timeline-content">
-            <span class="timeline-date">2013 - 2017</span>
-            <h3>Master of Science in Computer Science</h3>
-            <h4 style="color: var(--primary-light); margin-bottom: 15px;">Stanford University</h4>
-            <p>Graduated with Honors (GPA: 3.9/4.0). Specialized in Software Engineering and Artificial Intelligence.
-              Published research on "Optimizing Web Application Performance with Machine Learning".</p>
-            <p><strong>Awards:</strong> Dean's List (2015-2017), Best Thesis Award 2017</p>
+            <span class="timeline-date">2022 - Present</span>
+            <h3>BSc in Textile Engineering</h3>
+            <h4 style="color: var(--primary-light); margin-bottom: 15px;">Bangladesh University of Textiles</h4>
+            <p>4th Year Student (GPA: 3.00/4.0). Specialized in Textile Engineering.
+              I am currently pursuing my Textile Engineering degree at Bangladesh University of Textiles with a solid
+              academic
+              foundation. Actively vocal on campus, I advocate against student discrimination and champion equitable
+              rights. I have
+              led student movements to address systemic issues and serve on various administrative committees,
+              contributing to policy
+              dialogue and campus governance. My engagement reflects a commitment to fairness, leadership, and
+              collaborative
+              institutional improvement.</p>
+
           </div>
         </div>
 
         <div class="timeline-item fade-in">
           <div class="timeline-circle"></div>
           <div class="timeline-content">
-            <span class="timeline-date">2017</span>
-            <h3>AWS Solutions Architect Certification</h3>
-            <h4 style="color: var(--primary-light); margin-bottom: 15px;">Amazon Web Services</h4>
-            <p>Certified in designing distributed systems on AWS. Gained expertise in cloud architecture, security, and
-              cost optimization strategies for scalable applications.</p>
+            <span class="timeline-date">2021</span>
+            <h3>Higher Secondary Certificate (HSC)</h3>
+            <h4 style="color: var(--primary-light); margin-bottom: 15px;">Shahid Syed Nazrul Islam College, Mymensingh
+            </h4>
+            <p>I achieved an excellent academic record in the Higher Secondary Certificate (HSC) examination, securing a
+              perfect GPA of
+              5.00 out of 5.00. This accomplishment reflects strong academic discipline, comprehensive subject mastery,
+              and a
+              commitment to educational excellence.</p>
           </div>
         </div>
 
         <div class="timeline-item fade-in">
           <div class="timeline-circle"></div>
           <div class="timeline-content">
-            <span class="timeline-date">2018</span>
-            <h3>Advanced React & GraphQL</h3>
-            <h4 style="color: var(--primary-light); margin-bottom: 15px;">Frontend Masters</h4>
-            <p>Completed advanced course on modern React patterns, state management, and GraphQL implementation. Focused
-              on performance optimization and testing strategies.</p>
+            <span class="timeline-date">2019</span>
+            <h3>Secondary School Certificate (SSC)</h3>
+            <h4 style="color: var(--primary-light); margin-bottom: 15px;">Uchakhila Higher Secondary School and College
+            </h4>
+            <p>I earned a perfect GPA of 5.00 in the Secondary School Certificate (SSC) examination, demonstrating
+              academic excellence
+              early in my education. During school, I cultivated strong leadership qualities, advocated for student
+              voices, and
+              maintained positive relationships with both teachers and peers, laying a foundation for future academic
+              and
+              interpersonal success.</p>
           </div>
         </div>
       </div>
@@ -1391,17 +1439,17 @@
         <div class="skill-category fade-in">
           <div class="skill-header">
             <div class="skill-icon">
-              <i class="fab fa-js"></i>
+              <i class="fab fa-microsoft"></i>
             </div>
             <div>
-              <h3>Frontend</h3>
-              <p style="color: var(--gray); margin-bottom: 0;">Modern JavaScript frameworks</p>
+              <h3>Microsoft 365</h3>
+              <p style="color: var(--gray); margin-bottom: 0;">Microsoft Office 2021</p>
             </div>
           </div>
           <div class="skill-items">
             <div class="skill-item">
               <div class="skill-info">
-                <span class="skill-name">React / Next.js</span>
+                <span class="skill-name">MS Word</span>
                 <span class="skill-percentage">95%</span>
               </div>
               <div class="skill-bar-container">
@@ -1410,7 +1458,7 @@
             </div>
             <div class="skill-item">
               <div class="skill-info">
-                <span class="skill-name">TypeScript</span>
+                <span class="skill-name">MS Excel</span>
                 <span class="skill-percentage">90%</span>
               </div>
               <div class="skill-bar-container">
@@ -1419,20 +1467,20 @@
             </div>
             <div class="skill-item">
               <div class="skill-info">
-                <span class="skill-name">Vue.js / Nuxt.js</span>
-                <span class="skill-percentage">85%</span>
+                <span class="skill-name">MS Powerponit</span>
+                <span class="skill-percentage">95%</span>
               </div>
               <div class="skill-bar-container">
-                <div class="skill-bar" data-width="85"></div>
+                <div class="skill-bar" data-width="95"></div>
               </div>
             </div>
             <div class="skill-item">
               <div class="skill-info">
-                <span class="skill-name">HTML5 / CSS3 / Sass</span>
-                <span class="skill-percentage">98%</span>
+                <span class="skill-name">Power BI</span>
+                <span class="skill-percentage">60%</span>
               </div>
               <div class="skill-bar-container">
-                <div class="skill-bar" data-width="98"></div>
+                <div class="skill-bar" data-width="60"></div>
               </div>
             </div>
           </div>
@@ -1444,64 +1492,23 @@
               <i class="fas fa-server"></i>
             </div>
             <div>
-              <h3>Backend & Databases</h3>
+              <h3>Frontend & Backend</h3>
               <p style="color: var(--gray); margin-bottom: 0;">Server-side technologies</p>
             </div>
           </div>
           <div class="skill-items">
             <div class="skill-item">
               <div class="skill-info">
-                <span class="skill-name">Node.js / Express</span>
-                <span class="skill-percentage">92%</span>
+                <span class="skill-name">HTML</span>
+                <span class="skill-percentage">94%</span>
               </div>
               <div class="skill-bar-container">
-                <div class="skill-bar" data-width="92"></div>
+                <div class="skill-bar" data-width="94"></div>
               </div>
             </div>
             <div class="skill-item">
               <div class="skill-info">
-                <span class="skill-name">Python / Django</span>
-                <span class="skill-percentage">88%</span>
-              </div>
-              <div class="skill-bar-container">
-                <div class="skill-bar" data-width="88"></div>
-              </div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-info">
-                <span class="skill-name">MongoDB / Mongoose</span>
-                <span class="skill-percentage">85%</span>
-              </div>
-              <div class="skill-bar-container">
-                <div class="skill-bar" data-width="85"></div>
-              </div>
-            </div>
-            <div class="skill-item">
-              <div class="skill-info">
-                <span class="skill-name">PostgreSQL / MySQL</span>
-                <span class="skill-percentage">82%</span>
-              </div>
-              <div class="skill-bar-container">
-                <div class="skill-bar" data-width="82"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="skill-category fade-in">
-          <div class="skill-header">
-            <div class="skill-icon">
-              <i class="fas fa-cloud"></i>
-            </div>
-            <div>
-              <h3>DevOps & Cloud</h3>
-              <p style="color: var(--gray); margin-bottom: 0;">Deployment & infrastructure</p>
-            </div>
-          </div>
-          <div class="skill-items">
-            <div class="skill-item">
-              <div class="skill-info">
-                <span class="skill-name">AWS (EC2, S3, Lambda)</span>
+                <span class="skill-name">CSS</span>
                 <span class="skill-percentage">90%</span>
               </div>
               <div class="skill-bar-container">
@@ -1510,29 +1517,70 @@
             </div>
             <div class="skill-item">
               <div class="skill-info">
-                <span class="skill-name">Docker & Kubernetes</span>
+                <span class="skill-name">JavaScript</span>
+                <span class="skill-percentage">80%</span>
+              </div>
+              <div class="skill-bar-container">
+                <div class="skill-bar" data-width="80"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">Python</span>
                 <span class="skill-percentage">85%</span>
               </div>
               <div class="skill-bar-container">
                 <div class="skill-bar" data-width="85"></div>
               </div>
             </div>
+          </div>
+        </div>
+
+        <div class="skill-category fade-in">
+          <div class="skill-header">
+            <div class="skill-icon">
+              <i class="fas fa-users"></i>
+            </div>
+            <div>
+              <h3>Leadership & Management</h3>
+              <p style="color: var(--gray); margin-bottom: 0;">Team Coordination & Organizational Skills</p>
+            </div>
+          </div>
+          <div class="skill-items">
             <div class="skill-item">
               <div class="skill-info">
-                <span class="skill-name">CI/CD (Jenkins, GitHub Actions)</span>
-                <span class="skill-percentage">88%</span>
+                <span class="skill-name">Organization Management</span>
+                <span class="skill-percentage">90%</span>
               </div>
               <div class="skill-bar-container">
-                <div class="skill-bar" data-width="88"></div>
+                <div class="skill-bar" data-width="90"></div>
               </div>
             </div>
             <div class="skill-item">
               <div class="skill-info">
-                <span class="skill-name">Firebase / Vercel</span>
-                <span class="skill-percentage">95%</span>
+                <span class="skill-name">Program Development</span>
+                <span class="skill-percentage">87%</span>
               </div>
               <div class="skill-bar-container">
-                <div class="skill-bar" data-width="95"></div>
+                <div class="skill-bar" data-width="87"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">Public Speaking</span>
+                <span class="skill-percentage">80%</span>
+              </div>
+              <div class="skill-bar-container">
+                <div class="skill-bar" data-width="80"></div>
+              </div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-name">Social Advocacy</span>
+                <span class="skill-percentage">92%</span>
+              </div>
+              <div class="skill-bar-container">
+                <div class="skill-bar" data-width="92"></div>
               </div>
             </div>
           </div>
@@ -1547,8 +1595,8 @@
       <h2 class="fade-in">Languages</h2>
       <div class="languages-container">
         <div class="language-item fade-in">
-          <div class="language-flag">🇺🇸</div>
-          <h3 class="language-name">English</h3>
+          <div class="language-flag">🇧🇩</div>
+          <h3 class="language-name">Bangla</h3>
           <div class="language-level">Native Proficiency</div>
           <div class="language-progress">
             <div class="language-progress-bar" data-width="100"></div>
@@ -1556,31 +1604,24 @@
         </div>
 
         <div class="language-item fade-in">
-          <div class="language-flag">🇪🇸</div>
-          <h3 class="language-name">Spanish</h3>
+          <div class="language-flag">🇺🇸</div>
+          <h3 class="language-name">English</h3>
           <div class="language-level">Professional Proficiency</div>
           <div class="language-progress">
-            <div class="language-progress-bar" data-width="90"></div>
+            <div class="language-progress-bar" data-width="85"></div>
           </div>
         </div>
 
         <div class="language-item fade-in">
-          <div class="language-flag">🇫🇷</div>
-          <h3 class="language-name">French</h3>
-          <div class="language-level">Advanced</div>
-          <div class="language-progress">
-            <div class="language-progress-bar" data-width="75"></div>
-          </div>
-        </div>
-
-        <div class="language-item fade-in">
-          <div class="language-flag">🇯🇵</div>
-          <h3 class="language-name">Japanese</h3>
+          <div class="language-flag">🇹🇷</div>
+          <h3 class="language-name">Turkish</h3>
           <div class="language-level">Intermediate</div>
           <div class="language-progress">
-            <div class="language-progress-bar" data-width="60"></div>
+            <div class="language-progress-bar" data-width="45"></div>
           </div>
         </div>
+
+
       </div>
     </div>
   </section>
@@ -1592,10 +1633,10 @@
       <div class="hobbies-container">
         <div class="hobby-item fade-in">
           <div class="hobby-icon">
-            <i class="fas fa-code"></i>
+            <i class="fas fa-hands-helping"></i>
           </div>
-          <h3>Open Source</h3>
-          <p>Contributing to open-source projects and creating libraries for the developer community.</p>
+          <h3>Community Service</h3>
+          <p>Leading educational initiatives and social relief programs for underprivileged communities.</p>
         </div>
 
         <div class="hobby-item fade-in">
@@ -1611,7 +1652,8 @@
             <i class="fas fa-book"></i>
           </div>
           <h3>Reading</h3>
-          <p>Tech blogs, sci-fi novels, and biographies of technology pioneers and innovators.</p>
+          <p>Reading historical texts and analyzing political systems to understand societal development and governance.
+          </p>
         </div>
 
         <div class="hobby-item fade-in">
@@ -1639,7 +1681,7 @@
               <i class="fas fa-envelope"></i>
             </div>
             <h3>Email</h3>
-            <p>alex.chen@example.com</p>
+            <p>22010101059@ye.butex.edu.bd</p>
             <p style="font-size: 0.9rem; color: var(--gray); margin-top: 10px;">Response within 24 hours</p>
           </div>
 
@@ -1648,8 +1690,8 @@
               <i class="fas fa-phone"></i>
             </div>
             <h3>Phone</h3>
-            <p>+1 (415) 555-7890</p>
-            <p style="font-size: 0.9rem; color: var(--gray); margin-top: 10px;">Mon-Fri, 9AM-6PM PST</p>
+            <p>+880 1318223637</p>
+            <p style="font-size: 0.9rem; color: var(--gray); margin-top: 10px;">Anyday, 9AM-6PM GMT</p>
           </div>
 
           <div class="contact-item fade-in">
@@ -1657,17 +1699,21 @@
               <i class="fas fa-map-marker-alt"></i>
             </div>
             <h3>Location</h3>
-            <p>San Francisco, CA</p>
+            <p>G.M.A.G. Osmani Hall, BUTEX</p>
             <p style="font-size: 0.9rem; color: var(--gray); margin-top: 10px;">Open to remote work</p>
           </div>
         </div>
 
         <div class="social-links">
-          <a href="#" class="social-link"><i class="fab fa-github"></i></a>
-          <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-          <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-          <a href="#" class="social-link"><i class="fab fa-codepen"></i></a>
-          <a href="#" class="social-link"><i class="fab fa-dev"></i></a>
+
+          <a href="https://www.linkedin.com/in/shoayeb-jannat-b68311201/" class="social-link"><i
+              class="fab fa-linkedin-in"></i></a>
+
+          <a href="https://www.facebook.com/sybjannat.butex/" class="social-link"><i class="fab fa-facebook-f"></i></a>
+
+          <a href="https://www.instagram.com/sybjannat" class="social-link"><i class="fab fa-instagram"></i></a>
+
+
         </div>
       </div>
     </div>
@@ -1677,18 +1723,18 @@
   <footer>
     <div class="container">
       <div class="footer-logo">
-        <span>A</span>lexander<span style="color: var(--primary);">.</span>
+        <span>Shoayeb</span>Al Jannat<span style="color: var(--primary);">.</span>
       </div>
 
       <div style="max-width: 600px; margin: 0 auto;">
-        <p style="color: var(--gray);">This interactive CV is built with modern HTML, CSS, and JavaScript. It's fully
-          responsive and optimized for all devices.</p>
-        <p style="color: var(--gray); font-size: 0.9rem; margin-top: 20px;">Hosted on <span
-            class="highlight">Vercel</span> with <span class="highlight">Firebase</span> backend services.</p>
+        <p style="color: var(--gray);">Aspiring textile engineer blending technical expertise with digital innovation.
+          Committed to educational equity,
+          community service, and sustainable development through technology integration and student advocacy.</p>
+
       </div>
 
       <div class="copyright">
-        &copy; 2023 Alexander Chen. All rights reserved.
+        &copy; 2026 Shoayeb Al Jannat. All rights reserved.
       </div>
     </div>
   </footer>
@@ -1730,23 +1776,20 @@
       }
     });
 
-    // Mobile Menu Toggle
-    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-    const mobileCloseBtn = document.querySelector('.mobile-close');
-    const mobileMenu = document.querySelector('.mobile-menu');
+    // Mobile Menu Toggle - FIXED
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
     const mobileLinks = document.querySelectorAll('.mobile-menu a');
 
     mobileMenuBtn.addEventListener('click', () => {
-      mobileMenu.classList.add('active');
-    });
-
-    mobileCloseBtn.addEventListener('click', () => {
-      mobileMenu.classList.remove('active');
+      mobileMenu.classList.toggle('active');
+      mobileMenuBtn.classList.toggle('active');
     });
 
     mobileLinks.forEach(link => {
       link.addEventListener('click', () => {
         mobileMenu.classList.remove('active');
+        mobileMenuBtn.classList.remove('active');
       });
     });
 
@@ -1760,7 +1803,37 @@
       }
     });
 
-    // Scroll Animation
+    // Track which progress bars have been animated
+    const animatedBars = new Set();
+
+    // Function to animate progress bars when in view
+    function animateProgressBarsInView() {
+      const progressBars = document.querySelectorAll('.skill-bar, .language-progress-bar');
+
+      progressBars.forEach(bar => {
+        // Skip if already animated
+        if (animatedBars.has(bar)) return;
+
+        const barRect = bar.getBoundingClientRect();
+        const isInView = (
+          barRect.top <= (window.innerHeight - 100) &&
+          barRect.bottom >= 100
+        );
+
+        if (isInView) {
+          const width = bar.getAttribute('data-width');
+          // Animate the bar
+          setTimeout(() => {
+            bar.style.width = width + '%';
+          }, 100);
+
+          // Mark as animated
+          animatedBars.add(bar);
+        }
+      });
+    }
+
+    // Scroll Animation with progress bar animation on view
     const fadeElements = document.querySelectorAll('.fade-in');
 
     const fadeInOnScroll = () => {
@@ -1770,15 +1843,6 @@
 
         if (elementTop < window.innerHeight - elementVisible) {
           element.classList.add('visible');
-
-          // Animate skill bars
-          if (element.classList.contains('skill-item') || element.classList.contains('language-item')) {
-            const skillBars = element.querySelectorAll('.skill-bar, .language-progress-bar');
-            skillBars.forEach(bar => {
-              const width = bar.getAttribute('data-width');
-              bar.style.width = width + '%';
-            });
-          }
 
           // Animate stats
           if (element.classList.contains('stat-box')) {
@@ -1800,20 +1864,27 @@
           }
         }
       });
+
+      // Check and animate progress bars in view
+      animateProgressBarsInView();
     };
 
     // Initialize animations
     document.addEventListener('DOMContentLoaded', () => {
-      // Set initial skill bar widths to 0
+      // Set ALL progress bars to 0% initially
       document.querySelectorAll('.skill-bar, .language-progress-bar').forEach(bar => {
-        bar.style.width = '0';
+        bar.style.width = '0%';
       });
 
       // Check for elements on page load
       fadeInOnScroll();
     });
 
+    // Scroll event listener
     window.addEventListener('scroll', fadeInOnScroll);
+
+    // Also check on resize
+    window.addEventListener('resize', animateProgressBarsInView);
 
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1829,6 +1900,9 @@
             top: targetElement.offsetTop - 80,
             behavior: 'smooth'
           });
+
+          // Check progress bars after scrolling
+          setTimeout(animateProgressBarsInView, 500);
         }
       });
     });
@@ -1850,18 +1924,6 @@
       });
     });
 
-    // Interactive skill bars on hover
-    document.querySelectorAll('.skill-item, .language-item').forEach(item => {
-      item.addEventListener('mouseenter', function () {
-        const bars = this.querySelectorAll('.skill-bar, .language-progress-bar');
-        bars.forEach(bar => {
-          const width = bar.getAttribute('data-width');
-          bar.style.transition = 'width 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
-          bar.style.width = width + '%';
-        });
-      });
-    });
-
     // Add parallax effect to hero section
     window.addEventListener('scroll', () => {
       const scrolled = window.pageYOffset;
@@ -1870,6 +1932,9 @@
         hero.style.transform = `translateY(${scrolled * 0.05}px)`;
       }
     });
+
+    // Initial check for progress bars in view on page load
+    setTimeout(animateProgressBarsInView, 500);
   </script>
 </body>
 
