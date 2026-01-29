@@ -1016,6 +1016,67 @@
       z-index: -1;
     }
 
+
+
+
+
+
+    /* Activities Section */
+    .activities-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 25px;
+      margin-top: 50px;
+    }
+
+    .activity-item {
+      padding: 30px;
+      border-radius: var(--border-radius);
+      background: var(--glass);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border);
+      transition: var(--transition);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .activity-item:hover {
+      transform: translateY(-10px) scale(1.05);
+      box-shadow: var(--shadow-lg), var(--shadow-glow);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .activity-icon {
+      width: 70px;
+      height: 70px;
+      margin: 0 auto 20px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      color: white;
+    }
+
+    .activity-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--light);
+    }
+
+    .activity-description {
+      color: var(--gray);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+
+
+
+
     /* Responsive Design - FIXED NAVIGATION ISSUE */
     @media (max-width: 1200px) {
       h1 {
@@ -1167,6 +1228,7 @@
           <li><a href="#experience">Experience</a></li>
           <li><a href="#education">Education</a></li>
           <li><a href="#skills">Skills</a></li>
+          <li><a href="#activities">Activities</a></li>
           <li><a href="#languages">Languages</a></li>
           <li><a href="#hobbies">Hobbies</a></li>
           <li><a href="#contact">Contact</a></li>
@@ -1188,6 +1250,7 @@
         <li><a href="#experience">Experience</a></li>
         <li><a href="#education">Education</a></li>
         <li><a href="#skills">Skills</a></li>
+        <li><a href="#activities">Activities</a></li>
         <li><a href="#languages">Languages</a></li>
         <li><a href="#hobbies">Hobbies</a></li>
         <li><a href="#contact">Contact</a></li>
@@ -1667,6 +1730,109 @@
     </div>
   </section>
 
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Activities Section -->
+  <section id="activities">
+    <div class="container">
+      <h2 class="fade-in">Activities & Leadership</h2>
+      <div class="activities-container">
+        <div class="activity-item fade-in">
+          <div class="activity-icon">
+            <i class="fas fa-fist-raised"></i>
+          </div>
+          <h3 class="activity-title">Campus Co-ordinator</h3>
+
+          <h4 style="color: var(--primary-light); margin-bottom: 15px;">July Revolution</h4>
+
+          <p class="activity-description">
+            Strategically organized student mobilization and coordinated campus-wide anti-fascist protests against
+            Sheikh Hasina's
+            regime in BUTEX. Led tactical planning, designed persuasive protest materials, and orchestrated next-day
+            demonstrations to
+            advance national reform objectives.</p>
+        </div>
+
+        <div class="activity-item fade-in">
+          <div class="activity-icon">
+            <i class="fas fa-industry"></i>
+          </div>
+          <h3 class="activity-title">Campus Co-ordinator</h3>
+
+          <h4 style="color: var(--primary-light); margin-bottom: 15px;">Engineers' Rights Movement</h4>
+
+          <p class="activity-description">
+            Spearheaded campus mobilization for engineers' rights advocacy, orchestrating strategic protests and policy
+            dialogues.
+            Developed comprehensive protest frameworks and coordinated cross-campus alliances to advance professional
+            and academic
+            reforms.</p>
+        </div>
+
+        <div class="activity-item fade-in">
+          <div class="activity-icon">
+            <i class="fas fa-user-graduate"></i>
+          </div>
+          <h3 class="activity-title">Member</h3>
+
+          <h4 style="color: var(--primary-light); margin-bottom: 15px;">TEXCSU Constitution Drafting Committee</h4>
+
+          <p class="activity-description">Served on the Central Student Union's constitutional review board, drafting
+            governance frameworks and procedural
+            amendments to enhance institutional transparency and democratic processes within the university's student
+            leadership
+            structure.</p>
+        </div>
+
+
+
+
+        <div class="activity-item fade-in">
+          <div class="activity-icon">
+            <i class="fas fa-utensils"></i>
+          </div>
+          <h3 class="activity-title">Member</h3>
+
+          <h4 style="color: var(--primary-light); margin-bottom: 15px;">BUTEX Canteen Management Committee</h4>
+
+          <p class="activity-description">Contributed to strategic operational oversight of campus dining facilities,
+            ensuring quality service delivery,
+            compliance with standards, and enhancing student welfare through systematic management and procedural
+            improvements.</p>
+        </div>
+
+
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   <!-- Languages Section -->
   <section id="languages">
     <div class="container">
@@ -1744,6 +1910,18 @@
       </div>
     </div>
   </section>
+
+
+
+
+
+
+
+
+
+
+
+
 
   <!-- Contact Section -->
   <section id="contact">
