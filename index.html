@@ -1206,6 +1206,90 @@
         padding: 25px;
       }
     }
+
+    /* WhatsApp Floating Button */
+    .whatsapp-float {
+      position: fixed;
+      width: 60px;
+      height: 60px;
+      bottom: 40px;
+      right: 40px;
+      background-color: #25d366;
+      color: #FFF;
+      border-radius: 50px;
+      text-align: center;
+      font-size: 30px;
+      box-shadow: 0 5px 20px rgba(37, 211, 102, 0.3);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      animation: float-whatsapp 3s ease-in-out infinite;
+    }
+
+    .whatsapp-float:hover {
+      background-color: #128c7e;
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
+    }
+
+    .whatsapp-float::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: #25d366;
+      z-index: -1;
+      animation: pulse-whatsapp 2s infinite;
+    }
+
+    .whatsapp-float i {
+      position: relative;
+      z-index: 2;
+      transition: transform 0.3s ease;
+    }
+
+    .whatsapp-float:hover i {
+      transform: scale(1.2);
+    }
+
+    @keyframes float-whatsapp {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-15px);
+      }
+    }
+
+    @keyframes pulse-whatsapp {
+      0% {
+        transform: scale(1);
+        opacity: 0.8;
+      }
+
+      100% {
+        transform: scale(1.5);
+        opacity: 0;
+      }
+    }
+
+    /* Responsive WhatsApp button */
+    @media (max-width: 768px) {
+      .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        bottom: 20px;
+        right: 20px;
+        font-size: 25px;
+      }
+    }
   </style>
 </head>
 
@@ -2192,6 +2276,22 @@
     // Initial check for progress bars in view on page load
     setTimeout(animateProgressBarsInView, 500);
   </script>
+
+
+
+
+
+  <!-- WhatsApp Floating Button -->
+  <a href="https://wa.me/8801318223637?text=Hello!%20I%20saw%20your%20CV%20and%20would%20like%20to%20connect."
+    class="whatsapp-float" target="_blank" rel="noopener noreferrer" title="Chat on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+
+
+
+
+
 </body>
 
 </html>
